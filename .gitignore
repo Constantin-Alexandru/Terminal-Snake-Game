@@ -1,0 +1,6 @@
+#Folders
+/bin/
+/.vscode/
+
+#Files
+cmake-build-tool-config.txt

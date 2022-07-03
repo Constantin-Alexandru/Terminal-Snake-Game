@@ -36,6 +36,8 @@ int main(int argc, char const *argv[])
 
     std::future input_future = std::async(std::launch::async, readInput); 
 
+    int score = 0;
+
     while (true)
     {
         auto frameStart = std::chrono::system_clock::now();
@@ -43,7 +45,7 @@ int main(int argc, char const *argv[])
         ERASE_SCREEN;
 
         MOVE_CURSOR_TO_POS(title_start.y, title_start.x);
-        printf("SNAKE GAME");
+        printf("SNAKE GAME             Score: %d", score);
 
         MOVE_CURSOR_TO_POS(board_start.y, board_start.x);
         for (int y = 0; y < board_size.y; y++)
@@ -87,14 +89,18 @@ int main(int argc, char const *argv[])
             ERASE_SCREEN;
 
             MOVE_CURSOR_TO_POS(20, 20);
-            printf("GAME OVER, YOU LOST!");
+            printf("GAME OVER, YOU LOST! SCORE: %d", score);
+            MOVE_CURSOR_TO_POS(board_start.y + board_size.y, board_start.x + board_size.x);
+
             exit(0);
         }
 
         if (snake.collides(apple.getCoords()))
         {
+            score++;
             snake.eat();
-            apple.spawn();
+            while(snake.collides(apple.getCoords()))
+                apple.spawn();
         }
 
         snake.step();

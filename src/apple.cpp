@@ -1,6 +1,6 @@
 #include "apple.h"
 
-Apple::Apple(Coords limits) : coords(), x_distribution(0, limits.x - 1), y_distribution(0, limits.y - 1)
+Apple::Apple(Coords limits) : coords(), x_distribution(0, limits.x - 1), y_distribution(0, limits.y - 2)
 {
     std::random_device device;
     std::mt19937 rng(device());

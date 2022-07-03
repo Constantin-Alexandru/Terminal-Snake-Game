@@ -61,13 +61,13 @@ void Snake::step()
         this->snake_coords[0].x += limits.x;
     }
     
-    if(this->snake_coords[0].y >= limits.y)
+    if(this->snake_coords[0].y >= limits.y - 1)
     {
-        this->snake_coords[0].y -= limits.y;
+        this->snake_coords[0].y -= limits.y - 1;
     }
     else if(this->snake_coords[0].y < 0)
     {
-        this->snake_coords[0].y += limits.y;
+        this->snake_coords[0].y += limits.y - 1;
     }
 
 }

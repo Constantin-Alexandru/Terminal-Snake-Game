@@ -6,12 +6,14 @@
 #include <random>
 #include <stdio.h>
 
-class Apple{
+class Apple
+{
 public:
     Apple(Coords limits = Coords());
     void spawn();
     void draw(Coords board_spawn);
     Coords getCoords();
+
 private:
     Coords coords;
     Coords limits;

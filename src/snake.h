@@ -4,7 +4,6 @@
 #include "../ANSI-Library/ansi_lib.h"
 #include <vector>
 
-
 class Snake
 {
 public:

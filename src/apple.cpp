@@ -17,9 +17,11 @@ void Apple::spawn()
 
 void Apple::draw(Coords board_start)
 {
+    SET_8_VALUE_COLOUR(TXT_GREEN);
     MOVE_CURSOR_TO_POS(board_start.y + coords.y, board_start.x + coords.x);
 
     printf("X");
+    SET_8_VALUE_COLOUR(TXT_WHITE);
 }
 
 Coords Apple::getCoords()

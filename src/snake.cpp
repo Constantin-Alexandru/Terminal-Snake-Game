@@ -7,6 +7,7 @@ Snake::Snake(Coords limits) : limits(limits), dir(0, 0)
 
 void Snake::draw(Coords board_start)
 {
+    SET_256_TXT_COLOUR(11);
     for (int i = 1; i < snake_coords.size(); i++)
     {
         MOVE_CURSOR_TO_POS(board_start.y + snake_coords[i].y, board_start.x + snake_coords[i].x);
@@ -15,6 +16,7 @@ void Snake::draw(Coords board_start)
 
     MOVE_CURSOR_TO_POS(board_start.y + snake_coords[0].y, board_start.x + snake_coords[0].x);
     printf("O");
+    SET_8_VALUE_COLOUR(TXT_WHITE);
 }
 
 void Snake::setDir(int dir)
@@ -52,24 +54,23 @@ void Snake::step()
     }
     this->snake_coords[0] += this->dir;
 
-    if(this->snake_coords[0].x >= limits.x)
+    if (this->snake_coords[0].x >= limits.x)
     {
         this->snake_coords[0].x -= limits.x;
     }
-    else if(this->snake_coords[0].x < 0)
+    else if (this->snake_coords[0].x < 0)
     {
         this->snake_coords[0].x += limits.x;
     }
-    
-    if(this->snake_coords[0].y >= limits.y - 1)
-    {
-        this->snake_coords[0].y -= limits.y - 1;
-    }
-    else if(this->snake_coords[0].y < 0)
-    {
-        this->snake_coords[0].y += limits.y - 1;
-    }
 
+    if (this->snake_coords[0].y >= limits.y)
+    {
+        this->snake_coords[0].y -= limits.y;
+    }
+    else if (this->snake_coords[0].y < 0)
+    {
+        this->snake_coords[0].y += limits.y;
+    }
 }
 
 bool Snake::collides(Coords obj, int start_ind)

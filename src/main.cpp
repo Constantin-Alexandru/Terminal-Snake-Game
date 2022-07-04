@@ -51,7 +51,7 @@ int main(int argc, char const *argv[])
         for (int y = 0; y < board_size.y; y++)
         {
             for (int x = 0; x < board_size.x; x++)
-                printf("#");
+                printf("*");
 
             MOVE_CURSOR_TO_POS(board_start.y + y, board_start.x);
         }
